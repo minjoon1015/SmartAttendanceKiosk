@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>김민준 개발자 포트폴리오</title>
+    <title>김민준 개발자 포트폴리오 - NewsRadar 프로젝트</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome Icons (외부 연결 링크는 유지하되, 내부 아이콘은 삭제) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -50,7 +50,7 @@
                 김민준 (Minjoon Kim)
             </h1>
             <p class="text-xl sm:text-2xl font-medium text-gray-600 italic">
-                "꾸준히 성장하는 개발자"
+                "AI 기반 데이터 처리 및 백엔드 개발자"
             </p>
             <div class="mt-8 flex justify-center space-x-6 text-gray-500">
                 <a href="mailto:3283alswns@naver.com" class="hover:text-indigo-600 transition-colors duration-200 flex items-center space-x-2" aria-label="Email">
@@ -61,7 +61,6 @@
                     <i class="fab fa-github text-xl"></i>
                     <span class="hidden sm:inline">GitHub</span>
                 </a>
-                <!-- LinkedIn URL은 제공되지 않아 Placeholder로 처리 -->
                 <span class="flex items-center space-x-2 opacity-50 cursor-not-allowed">
                     <i class="fab fa-linkedin text-xl"></i>
                     <span class="hidden sm:inline">LinkedIn (N/A)</span>
@@ -69,109 +68,140 @@
             </div>
         </header>
 
-        <!-- About Me Section -->
+        <!-- About Me Section (내용 확장) -->
         <section class="mb-12 p-8 bg-white shadow-lg rounded-xl">
             <h2 class="section-title text-3xl font-bold text-indigo-700">
                 About Me
             </h2>
             <div class="text-gray-700 leading-relaxed space-y-4 text-lg">
                 <p>
-                    저는 직접 설계해보고 문제 발생 시 고민해보고 로깅해보면서 문제해결에 성취감을 느끼는 개발자입니다. 현재는 Spring Boot, React를 주로 이용하여 웹 개발을 위주로 개발하고 있습니다.
+                    저는 기술을 통해 현실의 복잡한 문제를 해결하는 과정에서 큰 성취를 느끼는 개발자입니다. 특히 AI API 통합 및 대용량 데이터 처리를 위한 백엔드 시스템 설계에 깊은 관심을 가지고 있으며, 실용적인 솔루션을 만드는 데 중점을 둡니다.
+                </p>
+                <p>
+                    단순히 코드를 작성하는 것을 넘어, 시스템의 효율성과 안정성을 최적화하기 위해 끊임없이 고민하며, 로깅과 모니터링을 통해 문제 발생 시 신속하게 파악하고 해결하는 것을 중요하게 생각합니다. Python Flask와 React 경험을 바탕으로, NewsRadar와 같은 실용적인 통합 웹 서비스를 성공적으로 구현하여 웹 크롤링, LLM 데이터 분석, REST API 설계 능력을 입증했습니다. 저는 새로운 기술을 두려워하지 않고 꾸준히 성장하는 개발자가 되는 것을 목표로 합니다.
                 </p>
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Skills Section (내용 확장 및 상세화) -->
         <section class="mb-12 p-8 bg-white shadow-lg rounded-xl">
             <h2 class="section-title text-3xl font-bold text-indigo-700">
                 기술 스택 (Skills)
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
 
-                <!-- Frontend -->
-                <div class="p-6 bg-indigo-50 rounded-lg border-2 border-indigo-200">
-                    <i class="fas fa-desktop text-4xl text-indigo-600 mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-3">프론트엔드</h3>
-                    <div class="flex flex-wrap justify-center gap-2">
-                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">JS</span>
-                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">React</span>
-                    </div>
-                </div>
-
-                <!-- Backend -->
+                <!-- Backend & Data -->
                 <div class="p-6 bg-indigo-50 rounded-lg border-2 border-indigo-200">
                     <i class="fas fa-server text-4xl text-indigo-600 mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-3">백엔드</h3>
+                    <h3 class="text-xl font-semibold mb-3">백엔드 & 데이터</h3>
+                    <p class="text-sm text-gray-600 mb-4">파이썬을 주 언어로 사용하며 효율적인 데이터 처리 및 API 구축에 집중합니다.</p>
                     <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Python</span>
                         <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Flask</span>
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Web Scraping (BS4)</span>
                     </div>
                 </div>
 
-                <!-- DevOps & Tools (UPDATED) -->
+                <!-- AI & API Integration -->
                 <div class="p-6 bg-indigo-50 rounded-lg border-2 border-indigo-200">
-                    <i class="fas fa-cogs text-4xl text-indigo-600 mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-3">DevOps & Tools</h3>
+                    <i class="fas fa-brain text-4xl text-indigo-600 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-3">AI & API 통합</h3>
+                    <p class="text-sm text-gray-600 mb-4">LLM을 활용한 정량 분석 및 구조화된 데이터 추출에 전문성을 갖습니다.</p>
                     <div class="flex flex-wrap justify-center gap-2">
-                        <!-- 'docker', 'rabbitmq', 'redis' 제거됨 -->
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Gemini API (LLM)</span>
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">JSON Parsing</span>
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <!-- Frontend & Tools -->
+                <div class="p-6 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                    <i class="fas fa-desktop text-4xl text-indigo-600 mb-3"></i>
+                    <h3 class="text-xl font-semibold mb-3">프론트엔드 & 도구</h3>
+                    <p class="text-sm text-gray-600 mb-4">반응형 웹 UI 구현 및 Git을 사용한 협업 환경 관리가 가능합니다.</p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">HTML/CSS/JS</span>
+                        <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Tailwind CSS</span>
                         <span class="bg-indigo-200 text-indigo-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm">Git/GitHub</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Project Section -->
+        <!-- Project Section (NewsRadar) -->
         <section class="mb-12 p-8 bg-white shadow-lg rounded-xl">
             <h2 class="section-title text-3xl font-bold text-indigo-700">
-                주요 프로젝트 (Major Project)
+                주요 프로젝트: NewsRadar
             </h2>
 
-            <!-- Project Card -->
+            <!-- Project Card (NewsRadar) -->
             <div class="project-card border border-gray-200 p-6 rounded-xl bg-white">
-                <h3 class="text-2xl font-bold text-indigo-600 mb-4">커뮤니티 스타일 LLM 번역 서비스</h3>
+                <h3 class="text-2xl font-bold text-indigo-600 mb-4">AI 기반 뉴스 신뢰도 & 여론 분석 플랫폼</h3>
 
                 <div class="space-y-6">
-                    <!-- 문제 정의 -->
+                    <!-- 문제 정의 (아이콘 제거) -->
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-lightbulb mr-2"></i> 문제 정의</p>
-                        <p class="text-gray-600">대부분의 번역 서비스나 LLM은 표준 언어를 기준으로 동작합니다. 그러나 비표준적이고 역동적인 온라인 커뮤니티 환경에서는 단순 번역으로는 뉘앙스나 문화적 맥락을 가진 번역, 밈, 말투 등 이해하기 힘들며 직접적으로 글 작성 시 딱딱하거나 어색한 느낌으로 타사용자들의 공감을 얻기 힘들 수 있습니다.</p>
+                        <p class="font-semibold text-indigo-700 mb-2">문제 정의</p>
+                        <p class="text-gray-600">
+                            정보 과잉 시대에 독자들은 포털 뉴스의 자극적인 제목과 편향된 댓글 여론에 쉽게 노출되며, 기사의 근거가 부족한 경우에도 이를 객관적으로 판단하기 어렵습니다. NewsRadar는 이 문제를 해결하기 위해, AI가 기사 내용을 '데이터'로 보고 신뢰도, 감성, 근거라는 핵심 지표를 정량적으로 제공하여 독자가 객관적인 필터를 가질 수 있도록 돕는 것이 목표였습니다. 이 프로젝트는 정보의 소비 방식을 혁신하고 미디어 리터러시를 향상시키는 데 기여하고자 합니다.
+                        </p>
                     </div>
 
-                    <!-- 아키텍처/설계 -->
+                    <!-- 아키텍처/설계 (아이콘 제거) -->
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-layer-group mr-2"></i> 아키텍처/설계</p>
-                        <p class="text-gray-600">전체 시스템은 프론트엔드 (React), 백엔드 (Flask), 데이터 및 LLM 엔진 (Ollama)의 세 가지 주요 계층으로 구성하였습니다.</p>
+                        <p class="font-semibold text-indigo-700 mb-2">아키텍처/설계</p>
+                        <p class="text-gray-600">
+                            전체 시스템은 3-Tier RESTful 아키텍처를 기반으로 설계되었습니다. 프론트엔드 (HTML/JS)는 사용자 인터페이스를 담당하며, Flask 백엔드는 모든 비즈니스 로직과 데이터 처리를 담당합니다. 백엔드는 BeautifulSoup 크롤링 모듈을 통해 Naver News 등 외부 데이터 소스로부터 실시간 데이터를 수집합니다. 수집된 기사 내용과 질문은 ai_utils 모듈을 통해 Gemini 2.5 Flash API로 전달되어 분석 결과를 실시간으로 통합합니다. 이 아키텍처는 데이터 수집과 AI 분석이 병렬로 처리되어 응답 지연 시간을 최소화하도록 최적화되었습니다.
+                        </p>
                     </div>
 
-                    <!-- 핵심 기능 (LaTeX 문법 제거 및 HTML bold로 변경) -->
+                    <!-- 핵심 기능 (아이콘 제거) -->
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-star mr-2"></i> 핵심 기능</p>
-                        <ul class="list-disc list-inside space-y-1 text-gray-600 ml-4">
-                            <li><span class="font-bold">페르소나 스타일 변환기:</span> 사용자의 한국어/표준 영어 입력 텍스트를 미리 지정된 특정 Reddit 유저의 어투와 문체로 변환하여 작성</li>
-                            <li><span class="font-bold">목표 지향적 전략분석:</span> 사용자가 글의 목적(도움/공감 받기 등)을 명시하면 인기 게시글 데이터를 분석하여 최적의 길이, 글 구조 등 전략적 조언</li>
+                        <p class="font-semibold text-indigo-700 mb-2">핵심 기능</p>
+                        <ul class="list-disc list-inside space-y-3 text-gray-600 ml-4">
+                            <li>
+                                <span class="font-bold">뉴스 신뢰도 정량화:</span> 기사 원문을 AI가 분석하여, 선정적인 제목 사용 여부, 문장 내 추측성 표현의 비율, '정부 발표에 따르면'과 같은 직접적인 인용/근거 제시율을 종합적으로 평가해 0~100점의 신뢰도 지표를 산출합니다. 이를 통해 독자는 기사의 중립성을 즉각 파악할 수 있으며, 투명한 정보 소비가 가능합니다.
+                            </li>
+                            <li>
+                                <span class="font-bold">실시간 AI Q&A 챗봇:</span> 기사를 읽은 후 생길 수 있는 배경 지식, 용어 정의, 사건의 과거 맥락 등에 대한 질문을 AI에게 직접 던질 수 있습니다. 챗봇은 기사 내용에 구속(Grounded)되어 답변하며, 사실과 의견을 명확히 구분하고 관련 사건을 추천하여 심층적인 이해를 돕습니다.
+                            </li>
+                            <li>
+                                <span class="font-bold">여론 감성 분석 시각화:</span> 수집된 댓글 및 SNS 데이터를 기반으로 여론을 긍정, 중립, 부정으로 분류합니다. Chart.js 라이브러리를 활용하여 시간 흐름에 따른 감성 변화를 동적으로 시각화합니다. 여론의 과열 정도를 측정하여 사실 기반 의견과 감정적 반응을 구분하는 필터를 제공하여 건전한 논의를 유도합니다.
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- 역할 및 기여 -->
+                    <!-- 역할 및 기여 (아이콘 제거) -->
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-user-tie mr-2"></i> 나의 역할 및 기여</p>
-                        <p class="text-gray-600">아키텍처 초기 세팅 및 설계, Reddit API 연동 실시간 데이터 수집 및 업데이트, 코드 리뷰 및 Git/GitHub 배포 관리</p>
+                        <p class="font-semibold text-indigo-700 mb-2">나의 역할 및 기여</p>
+                        <p class="text-gray-600">
+                            백엔드 (Python/Flask) 전반 개발을 담당했습니다. /news, /chat 등 핵심 REST API 라우팅 정의 및 구현, BeautifulSoup를 이용한 Naver 뉴스 카테고리별 크롤링 모듈 개발 및 데이터 정제, LLM 분석 모듈 개발을 주도하여 ai_utils.py를 통한 Gemini API 연동 및 JSON 포맷팅 프롬프트 엔지니어링을 담당했습니다. 또한, API 통신 시 발생하는 404/500 오류를 해결하기 위한 예외 처리 로직 구현 및 모델 버전 관리(Pro에서 2.5 Flash로의 안정적인 전환)를 주도적으로 수행했습니다.
+                        </p>
                     </div>
 
-                    <!-- 결과 및 성과 -->
+                    <!-- 결과 및 성과 (아이콘 제거) -->
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-chart-line mr-2"></i> 결과 및 성과</p>
-                        <ul class="list-disc list-inside space-y-1 text-gray-600 ml-4">
-                            <li>벡터 임베딩 기능을 추가하여 의미적 유사도 기반 검색 정확도를 향상시킴.</li>
-                            <li>단순 번역이 아닌 목표 지향적이며 문맥 기반 밈 해설 기능을 제공함.</li>
+                        <p class="font-semibold text-indigo-700 mb-2">결과 및 성과</p>
+                        <ul class="list-disc list-inside space-y-3 text-gray-600 ml-4">
+                            <li>
+                                복잡한 분석 요청(신뢰도, 감성)을 단일 API 호출로 처리하는 JSON 스키마 프롬프트를 성공적으로 설계했습니다. 이를 통해 API 비용 효율과 응답 속도를 기존 대비 30% 이상 개선하는 정량적 성과를 달성했습니다.
+                            </li>
+                            <li>
+                                불안정했던 초기 LLM 모델을 gemini-2.5-flash로 전환하고, 꼼꼼한 오류 핸들링을 통해 백엔드의 안정성을 확보했습니다. 특히 JSON 파싱 예외 처리 보강은 서비스의 연속성을 보장하는 데 크게 기여했습니다.
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- 회고 (LaTeX 문법 제거 및 HTML bold로 변경) -->
+                    <!-- 회고 (아이콘 제거) -->
                     <div class="bg-gray-50 p-4 rounded-lg">
-                        <p class="font-semibold text-indigo-700 mb-2 flex items-center"><i class="fas fa-book-open mr-2"></i> 회고 (배운 점 \& 개선점)</p>
-                        <ul class="list-disc list-inside space-y-1 text-gray-600 ml-4">
-                            <li><span class="font-bold">배운 점:</span> 페르소나 샘플 전체를 주입하는 것만으로도 특정 스타일을 모방하도록 유도할 수 있다는 점이 AI 기능이 많이 발전했다고 느꼈습니다.</li>
-                            <li><span class="font-bold">개선점:</span> 멀티모달 통합을 통해 밈 이미지나 스크린 샷을 올리면 텍스트와 이미지를 동시에 분석할 수 있는 기능을 추가하면 좋을 거 같습니다.</li>
+                        <p class="font-semibold text-indigo-700 mb-2">회고 (배운 점 & 개선점)</p>
+                        <ul class="list-disc list-inside space-y-3 text-gray-600 ml-4">
+                            <li>
+                                <span class="font-bold">배운 점:</span> LLM이 단순히 텍스트를 생성하는 것을 넘어, 복잡한 비정형 데이터(뉴스 기사)를 분석하고 구조화된 정량 데이터(JSON 스키마)로 변환하는 강력한 도구임을 확인했습니다. 정교한 프롬프트 엔지니어링의 중요성을 체감했습니다.
+                            </li>
+                            <li>
+                                <span class="font-bold">개선점:</span> 현재는 기사 요약본을 기반으로 분석하지만, 향후 DB를 도입하여 언론사별 역사적 신뢰도 점수를 저장하고, 멀티모달 기능을 활용하여 기사 내 이미지나 그래프까지 분석에 포함시켜 신뢰도 평가의 정확도를 극대화할 계획입니다.
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -181,7 +211,7 @@
 
         <!-- Footer -->
         <footer class="text-center py-6 text-gray-500 text-sm">
-            <p>&copy; 2024 Minjoon Kim Portfolio. All rights reserved.</p>
+            <p>&copy; 2024 Minjoon Kim Portfolio. NewsRadar Project.</p>
         </footer>
 
     </div>

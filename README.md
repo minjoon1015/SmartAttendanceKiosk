@@ -1,1 +1,1 @@
-# NewsRadar
+# SmartAttendanceKiosk

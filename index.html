@@ -1,270 +1,270 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대학 출석 체크 키오스크</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* 키오스크 화면의 최소 높이 설정 */
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f3f4f6; /* 밝은 회색 배경 */
-            font-family: 'Inter', sans-serif; /* 폰트 설정 */
-        }
-        /* 지문 인식 영역에 애니메이션 효과 추가 (터치 유도) */
-        .fingerprint-area {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .fingerprint-area:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(67, 56, 202, 0.2); /* 인디고 색상 섀도우 */
-        }
-        /* 성공 메시지 애니메이션 */
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .success-message {
-            animation: fadeInScale 0.3s ease-out;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대학 출석 체크 키오스크</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 키오스크 화면의 최소 높이 설정 */
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f4f6; /* 밝은 회색 배경 */
+            font-family: 'Inter', sans-serif; /* 폰트 설정 */
+        }
+        /* 지문 인식 영역에 애니메이션 효과 추가 (터치 유도) */
+        .fingerprint-area {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .fingerprint-area:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(67, 56, 202, 0.2); /* 인디고 색상 섀도우 */
+        }
+        /* 성공 메시지 애니메이션 */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .success-message {
+            animation: fadeInScale 0.3s ease-out;
+        }
 
-        /* 비디오 컨테이너 스타일 */
-        #video-container {
-            width: 100%;
-            max-width: 1200px; /* 전체 화면보다 조금 작게 설정 */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer; /* 클릭 유도 */
-        }
-        /* 비디오 요소 자체의 스타일 */
-        #promo-video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* 화면에 꽉 차도록 하되 비율 유지 */
-        }
-    </style>
+        /* 비디오 컨테이너 스타일 */
+        #video-container {
+            width: 100%;
+            max-width: 1200px; /* 전체 화면보다 조금 작게 설정 */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer; /* 클릭 유도 */
+        }
+        /* 비디오 요소 자체의 스타일 */
+        #promo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 화면에 꽉 차도록 하되 비율 유지 */
+        }
+    </style>
 </head>
 <body class="p-4 sm:p-8">
 
-    <div id="video-container" class="bg-black transition-opacity duration-500">
-        <video id="promo-video" autoplay muted loop playsinline> 
-            <source src="kiosk.mp4" type="video/mp4">
-            죄송합니다. 이 브라우저는 비디오 태그를 지원하지 않습니다.
-        </video>
-        <div class="absolute text-white text-3xl font-bold opacity-80 p-4 rounded-lg bg-gray-900 bg-opacity-50">
-            화면을 터치(클릭)하여 키오스크를 시작하세요.
-        </div>
-    </div>
+    <div id="video-container" class="bg-black transition-opacity duration-500">
+        <video id="promo-video" autoplay muted loop playsinline> 
+                        <source src="kiosk.mp4" type="video/mp4">
+            죄송합니다. 이 브라우저는 비디오 태그를 지원하지 않습니다.
+        </video>
+        <div class="absolute text-white text-3xl font-bold opacity-80 p-4 rounded-lg bg-gray-900 bg-opacity-50">
+            화면을 터치(클릭)하여 키오스크를 시작하세요.
+        </div>
+    </div>
 
 
-    <div id="kiosk-main-container" class="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden p-8 lg:p-12 border-4 border-indigo-600" style="display: none;">
-        
-        <header class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">🎓 스마트 출석 시스템</h1>
-            <p class="text-2xl font-semibold text-indigo-600" id="current-time">오전 10:20</p>
-            <p class="text-lg text-gray-500" id="current-date">2025년 11월 27일 (목)</p>
-        </header>
+    <div id="kiosk-main-container" class="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden p-8 lg:p-12 border-4 border-indigo-600" style="display: none;">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">🎓 스마트 출석 시스템</h1>
+            <p class="text-2xl font-semibold text-indigo-600" id="current-time">오전 10:20</p>
+            <p class="text-lg text-gray-500" id="current-date">2025년 11월 27일 (목)</p>
+        </header>
 
-        <div id="message-area" class="text-center mb-10 p-5 rounded-xl bg-indigo-100 text-indigo-800 border-l-8 border-indigo-500 shadow-lg">
-            <p class="text-2xl font-bold">📢 현재 수업: 디지털 미디어 개론 (A01)</p>
-            <p class="text-xl mt-1">출석 체크를 위해 지정된 영역을 터치하여 지문을 스캔하세요.</p>
-        </div>
+        <div id="message-area" class="text-center mb-10 p-5 rounded-xl bg-indigo-100 text-indigo-800 border-l-8 border-indigo-500 shadow-lg">
+            <p class="text-2xl font-bold">📢 현재 수업: 디지털 미디어 개론 (A01)</p>
+            <p class="text-xl mt-1">출석 체크를 위해 지정된 영역을 터치하여 지문을 스캔하세요.</p>
+        </div>
 
-        <main class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            
-            <div id="fingerprint-scan" class="flex flex-col items-center justify-center p-8 bg-indigo-50 rounded-2xl border-4 border-dashed border-indigo-300 fingerprint-area shadow-inner">
-                <div class="text-indigo-600 mb-4">
-                    <svg class="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9c0 1.25.26 2.45.74 3.56M12 21v-8m0-8h.01M9 13h6M6 16.01c.56-.37 1.28-.56 2.01-.56 1.13 0 2.22.42 3.03 1.23.81.81 1.9 1.23 3.03 1.23v.01M16 16.01c-.56-.37-1.28-.56-2.01-.56-1.13 0-2.22.42-3.03 1.23-.81.81-1.9 1.23-3.03 1.23v.01"/>
-                    </svg>
-                </div>
-                <h2 class="text-3xl font-bold text-gray-800 mb-2">지문 인식으로 출석</h2>
-                <p class="text-xl text-gray-600 text-center">지정된 지문 인식 영역에 손가락을 대주세요.</p>
-                <button id="scan-button" onclick="simulateSuccess()" class="mt-6 w-full py-4 bg-indigo-600 text-white text-2xl font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-xl active:scale-98 transform duration-150">
-                    스캔 시작 (터치)
-                </button>
-            </div>
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            
+            <div id="fingerprint-scan" class="flex flex-col items-center justify-center p-8 bg-indigo-50 rounded-2xl border-4 border-dashed border-indigo-300 fingerprint-area shadow-inner">
+                <div class="text-indigo-600 mb-4">
+                    <svg class="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9c0 1.25.26 2.45.74 3.56M12 21v-8m0-8h.01M9 13h6M6 16.01c.56-.37 1.28-.56 2.01-.56 1.13 0 2.22.42 3.03 1.23.81.81 1.9 1.23 3.03 1.23v.01M16 16.01c-.56-.37-1.28-.56-2.01-.56-1.13 0-2.22.42-3.03 1.23-.81.81-1.9 1.23-3.03 1.23v.01"/>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">지문 인식으로 출석</h2>
+                <p class="text-xl text-gray-600 text-center">지정된 지문 인식 영역에 손가락을 대주세요.</p>
+                <button id="scan-button" onclick="simulateSuccess()" class="mt-6 w-full py-4 bg-indigo-600 text-white text-2xl font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-xl active:scale-98 transform duration-150">
+                    스캔 시작 (터치)
+                </button>
+            </div>
 
-            <div class="flex flex-col space-y-6">
-                
-                <div class="flex-1 p-6 bg-gray-50 rounded-2xl border border-gray-300 flex items-center shadow-md">
-                    <div class="text-gray-600 mr-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-semibold text-gray-800">학생증/ID 카드 인식</h3>
-                        <p class="text-lg text-gray-600">하단 카드 리더기에 학생증을 접촉하세요.</p>
-                    </div>
-                </div>
+            <div class="flex flex-col space-y-6">
+                
+                <div class="flex-1 p-6 bg-gray-50 rounded-2xl border border-gray-300 flex items-center shadow-md">
+                    <div class="text-gray-600 mr-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800">학생증/ID 카드 인식</h3>
+                        <p class="text-lg text-gray-600">하단 카드 리더기에 학생증을 접촉하세요.</p>
+                    </div>
+                </div>
 
-                <div class="flex-1 p-6 bg-gray-50 rounded-2xl border border-gray-300 flex items-center shadow-md">
-                    <div class="text-gray-600 mr-4">
-                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-semibold text-gray-800">QR 코드 / 학번 입력</h3>
-                        <p class="text-lg text-gray-600">모바일 앱 QR을 스캔하거나 학번을 입력하세요.</p>
-                    </div>
-                </div>
+                <div class="flex-1 p-6 bg-gray-50 rounded-2xl border border-gray-300 flex items-center shadow-md">
+                    <div class="text-gray-600 mr-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800">QR 코드 / 학번 입력</h3>
+                        <p class="text-lg text-gray-600">모바일 앱 QR을 스캔하거나 학번을 입력하세요.</p>
+                    </div>
+                </div>
 
-                <button onclick="showCallModal()" class="w-full py-4 bg-red-500 text-white text-2xl font-bold rounded-xl hover:bg-red-600 transition-colors shadow-xl mt-4 active:scale-98 transform duration-150">
-                    문제가 발생했나요? 담당자 호출
-                </button>
-            </div>
-        </main>
+                <button onclick="showCallModal()" class="w-full py-4 bg-red-500 text-white text-2xl font-bold rounded-xl hover:bg-red-600 transition-colors shadow-xl mt-4 active:scale-98 transform duration-150">
+                    문제가 발생했나요? 담당자 호출
+                </button>
+            </div>
+        </main>
 
-        <footer class="text-center mt-12 pt-6 border-t border-gray-200">
-            <p class="text-md text-gray-400">© 2025 [가상대학교]. 스마트 캠퍼스 시스템.</p>
-        </footer>
-    </div>
+        <footer class="text-center mt-12 pt-6 border-t border-gray-200">
+            <p class="text-md text-gray-400">© 2025 [가상대학교]. 스마트 캠퍼스 시스템.</p>
+        </footer>
+    </div>
 
-    <div id="kiosk-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center p-4 z-50 transition-opacity duration-300">
-        <div class="bg-white rounded-xl p-8 max-w-lg w-full text-center shadow-2xl">
-            <h3 id="modal-title" class="text-3xl font-bold text-gray-800 mb-4"></h3>
-            <p id="modal-body" class="text-xl text-gray-600 mb-6"></p>
-            <button onclick="closeModal()" class="w-40 py-3 bg-indigo-600 text-white text-xl font-semibold rounded-lg hover:bg-indigo-700 transition-colors">확인</button>
-        </div>
-    </div>
-
-
-    <script>
-        // --- 새로운 기능: 비디오 클릭 시 키오스크 화면으로 전환 ---
-
-        const videoContainer = document.getElementById('video-container');
-        const kioskMainContainer = document.getElementById('kiosk-main-container');
-        const promoVideo = document.getElementById('promo-video');
-
-        // 비디오 컨테이너를 클릭하면 호출되는 함수
-        videoContainer.addEventListener('click', switchToKiosk);
-        
-        // 키오스크 화면으로 전환하는 함수
-        function switchToKiosk() {
-            // 1. 비디오 정지 및 숨기기
-            if (!promoVideo.paused) {
-                promoVideo.pause();
-            }
-            videoContainer.style.display = 'none';
-
-            // 2. 키오스크 메인 화면 표시
-            kioskMainContainer.style.display = 'block'; 
-
-            // (선택 사항: body의 flex 설정을 다시 적용하여 키오스크를 중앙에 배치)
-            document.body.style.alignItems = 'center';
-            document.body.style.justifyContent = 'center';
-
-            // 시간 업데이트 시작 (원래 키오스크 스크립트 기능)
-            updateTime();
-            setInterval(updateTime, 1000);
-        }
-
-        // --- 기존 키오스크 기능 스크립트 ---
-
-        // 현재 시간 및 날짜 업데이트 함수
-        function updateTime() {
-            const now = new Date();
-            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
-            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' };
-
-            // 키오스크가 표시될 때만 시간 업데이트를 시도합니다.
-            if(document.getElementById('current-time')) {
-                document.getElementById('current-time').textContent = now.toLocaleTimeString('ko-KR', timeOptions);
-                document.getElementById('current-date').textContent = now.toLocaleDateString('ko-KR', dateOptions);
-            }
-        }
-
-        // 모달 제어 함수 (생략되지 않음)
-        const modal = document.getElementById('kiosk-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalBody = document.getElementById('modal-body');
-
-        function showModal(title, body) {
-            modalTitle.textContent = title;
-            modalBody.textContent = body;
-            modal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        function showCallModal() {
-            showModal("담당자 호출", "잠시만 기다려 주세요. 담당자에게 연락되었습니다.");
-        }
+    <div id="kiosk-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center p-4 z-50 transition-opacity duration-300">
+        <div class="bg-white rounded-xl p-8 max-w-lg w-full text-center shadow-2xl">
+            <h3 id="modal-title" class="text-3xl font-bold text-gray-800 mb-4"></h3>
+            <p id="modal-body" class="text-xl text-gray-600 mb-6"></p>
+            <button onclick="closeModal()" class="w-40 py-3 bg-indigo-600 text-white text-xl font-semibold rounded-lg hover:bg-indigo-700 transition-colors">확인</button>
+        </div>
+    </div>
 
 
-        // 출석 성공 시뮬레이션 함수 (생략되지 않음)
-        function simulateSuccess() {
-            const messageArea = document.getElementById('message-area');
-            const button = document.getElementById('scan-button');
-            
-            // 시뮬레이션 중 (스캔 중) 상태
-            messageArea.classList.remove('bg-indigo-100', 'text-indigo-800');
-            messageArea.classList.add('bg-yellow-100', 'text-yellow-800', 'border-yellow-500');
-            messageArea.innerHTML = '<p class="text-2xl font-bold">... 지문 인식 중 ...</p><p class="text-xl mt-1">손가락을 움직이지 마세요.</p>';
-            button.textContent = '스캔 중...';
-            button.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
-            button.classList.add('bg-yellow-600', 'cursor-wait');
-            button.disabled = true;
+    <script>
+        // --- 새로운 기능: 비디오 클릭 시 키오스크 화면으로 전환 ---
 
-            // 1.5초 후 성공/실패 판정
-            setTimeout(() => {
-                const isSuccess = Math.random() < 0.9;
-                
-                if (isSuccess) {
-                    // UI 변경: 성공 메시지
-                    messageArea.classList.remove('bg-yellow-100', 'text-yellow-800', 'border-yellow-500');
-                    messageArea.classList.add('bg-green-100', 'text-green-800', 'border-green-500', 'success-message');
-                    messageArea.innerHTML = '<p class="text-2xl font-bold">✅ 출석 체크 완료!</p><p class="text-xl mt-1">홍길동 학생, 정상적으로 출석 처리되었습니다. 감사합니다.</p>';
-                    
-                    // 버튼 비활성화 및 텍스트 변경
-                    button.textContent = '출석 완료됨';
-                    button.classList.remove('bg-yellow-600', 'cursor-wait');
-                    button.classList.add('bg-green-600', 'cursor-not-allowed');
+        const videoContainer = document.getElementById('video-container');
+        const kioskMainContainer = document.getElementById('kiosk-main-container');
+        const promoVideo = document.getElementById('promo-video');
 
-                    // 3초 후 초기 상태로 복구 (다음 학생을 위해)
-                    setTimeout(resetKiosk, 3000);
+        // 비디오 컨테이너를 클릭하면 호출되는 함수
+        videoContainer.addEventListener('click', switchToKiosk);
+        
+        // 키오스크 화면으로 전환하는 함수
+        function switchToKiosk() {
+            // 1. 비디오 정지 및 숨기기
+            if (!promoVideo.paused) {
+                promoVideo.pause();
+            }
+            videoContainer.style.display = 'none';
 
-                } else {
-                    // 실패 시뮬레이션
-                    messageArea.classList.remove('bg-yellow-100', 'text-yellow-800', 'border-yellow-500');
-                    messageArea.classList.add('bg-red-100', 'text-red-800', 'border-red-500', 'success-message');
-                    messageArea.innerHTML = '<p class="text-2xl font-bold">❌ 인식 실패!</p><p class="text-xl mt-1">지문이 인식되지 않았습니다. 다시 시도하거나 ID 카드를 이용해주세요.</p>';
-                    
-                    // 버튼 재활성화
-                    button.textContent = '다시 스캔';
-                    button.classList.remove('bg-yellow-600', 'cursor-wait');
-                    button.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
-                    button.disabled = false;
+            // 2. 키오스크 메인 화면 표시
+            kioskMainContainer.style.display = 'block'; 
 
-                    // 5초 후 초기 상태로 복구
-                    setTimeout(resetKiosk, 5000);
-                }
-            }, 1500);
-        }
+            // (선택 사항: body의 flex 설정을 다시 적용하여 키오스크를 중앙에 배치)
+            document.body.style.alignItems = 'center';
+            document.body.style.justifyContent = 'center';
 
-        // 키오스크 초기 상태로 복구 (생략되지 않음)
-        function resetKiosk() {
-            const messageArea = document.getElementById('message-area');
-            const button = document.getElementById('scan-button');
+            // 시간 업데이트 시작 (원래 키오스크 스크립트 기능)
+            updateTime();
+            setInterval(updateTime, 1000);
+        }
 
-            // 메시지 영역 초기화
-            messageArea.className = 'text-center mb-10 p-5 rounded-xl bg-indigo-100 text-indigo-800 border-l-8 border-indigo-500 shadow-lg';
-            messageArea.innerHTML = '<p class="text-2xl font-bold">📢 현재 수업: 디지털 미디어 개론 (A01)</p><p class="text-xl mt-1">출석 체크를 위해 지정된 영역을 터치하여 지문을 스캔하세요.</p>';
+        // --- 기존 키오스크 기능 스크립트 ---
 
-            // 버튼 초기화
-            button.textContent = '스캔 시작 (터치)';
-            button.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
-            button.classList.remove('bg-green-600', 'bg-red-600', 'cursor-not-allowed', 'cursor-wait');
-            button.disabled = false;
-        }
+        // 현재 시간 및 날짜 업데이트 함수
+        function updateTime() {
+            const now = new Date();
+            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+            const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' };
 
-    </script>
+            // 키오스크가 표시될 때만 시간 업데이트를 시도합니다.
+            if(document.getElementById('current-time')) {
+                document.getElementById('current-time').textContent = now.toLocaleTimeString('ko-KR', timeOptions);
+                document.getElementById('current-date').textContent = now.toLocaleDateString('ko-KR', dateOptions);
+            }
+        }
+
+        // 모달 제어 함수 (생략되지 않음)
+        const modal = document.getElementById('kiosk-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+
+        function showModal(title, body) {
+            modalTitle.textContent = title;
+            modalBody.textContent = body;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function showCallModal() {
+            showModal("담당자 호출", "잠시만 기다려 주세요. 담당자에게 연락되었습니다.");
+        }
+
+
+        // 출석 성공 시뮬레이션 함수 (생략되지 않음)
+        function simulateSuccess() {
+            const messageArea = document.getElementById('message-area');
+            const button = document.getElementById('scan-button');
+            
+            // 시뮬레이션 중 (스캔 중) 상태
+            messageArea.classList.remove('bg-indigo-100', 'text-indigo-800');
+            messageArea.classList.add('bg-yellow-100', 'text-yellow-800', 'border-yellow-500');
+            messageArea.innerHTML = '<p class="text-2xl font-bold">... 지문 인식 중 ...</p><p class="text-xl mt-1">손가락을 움직이지 마세요.</p>';
+            button.textContent = '스캔 중...';
+            button.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+            button.classList.add('bg-yellow-600', 'cursor-wait');
+            button.disabled = true;
+
+            // 1.5초 후 성공/실패 판정
+            setTimeout(() => {
+                const isSuccess = Math.random() < 0.9;
+                
+                if (isSuccess) {
+                    // UI 변경: 성공 메시지
+                    messageArea.classList.remove('bg-yellow-100', 'text-yellow-800', 'border-yellow-500');
+                    messageArea.classList.add('bg-green-100', 'text-green-800', 'border-green-500', 'success-message');
+                    messageArea.innerHTML = '<p class="text-2xl font-bold">✅ 출석 체크 완료!</p><p class="text-xl mt-1">홍길동 학생, 정상적으로 출석 처리되었습니다. 감사합니다.</p>';
+                    
+                    // 버튼 비활성화 및 텍스트 변경
+                    button.textContent = '출석 완료됨';
+                    button.classList.remove('bg-yellow-600', 'cursor-wait');
+                    button.classList.add('bg-green-600', 'cursor-not-allowed');
+
+                    // 3초 후 초기 상태로 복구 (다음 학생을 위해)
+                    setTimeout(resetKiosk, 3000);
+
+                } else {
+                    // 실패 시뮬레이션
+                    messageArea.classList.remove('bg-yellow-100', 'text-yellow-800', 'border-yellow-500');
+                    messageArea.classList.add('bg-red-100', 'text-red-800', 'border-red-500', 'success-message');
+                    messageArea.innerHTML = '<p class="text-2xl font-bold">❌ 인식 실패!</p><p class="text-xl mt-1">지문이 인식되지 않았습니다. 다시 시도하거나 ID 카드를 이용해주세요.</p>';
+                    
+                    // 버튼 재활성화
+                    button.textContent = '다시 스캔';
+                    button.classList.remove('bg-yellow-600', 'cursor-wait');
+                    button.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+                    button.disabled = false;
+
+                    // 5초 후 초기 상태로 복구
+                    setTimeout(resetKiosk, 5000);
+                }
+            }, 1500);
+        }
+
+        // 키오스크 초기 상태로 복구 (생략되지 않음)
+        function resetKiosk() {
+            const messageArea = document.getElementById('message-area');
+            const button = document.getElementById('scan-button');
+
+            // 메시지 영역 초기화
+            messageArea.className = 'text-center mb-10 p-5 rounded-xl bg-indigo-100 text-indigo-800 border-l-8 border-indigo-500 shadow-lg';
+            messageArea.innerHTML = '<p class="text-2xl font-bold">📢 현재 수업: 디지털 미디어 개론 (A01)</p><p class="text-xl mt-1">출석 체크를 위해 지정된 영역을 터치하여 지문을 스캔하세요.</p>';
+
+            // 버튼 초기화
+            button.textContent = '스캔 시작 (터치)';
+            button.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+            button.classList.remove('bg-green-600', 'bg-red-600', 'cursor-not-allowed', 'cursor-wait');
+            button.disabled = false;
+        }
+
+    </script>
 </body>
 </html>
